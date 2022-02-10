@@ -14,8 +14,8 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  getCliente(cedula: any): Observable<any>{
-    return this.http.get(environment.urlGlobal+this.api+cedula);
+  getCliente(correo: any): Observable<any>{
+    return this.http.get(environment.urlGlobal+this.api+correo);
   }
 
   saveCliente(cliente: Cliente): Observable<Cliente> {

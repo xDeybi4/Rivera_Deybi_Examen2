@@ -43,14 +43,14 @@ export class RegisterPage implements OnInit {
     }
   }
 
-  onBlurCedula(event: any) {
+  onBlurCorreo(event: any) {
     const value = event.target.value;
 
     if (!value) {
       this.focused = false;
       return;
     }
-    this._clienteService.getCliente(this.form.value.cedCli).subscribe(data => {
+    this._clienteService.getCliente(this.form.value.corCli).subscribe(data => {
       this.llenarCamposAuto(data);
     }, error => {
       this.resetCamposAuto();
@@ -63,7 +63,8 @@ export class RegisterPage implements OnInit {
       nomCli: data.nomCli,
       apeCli: data.apeCli,
       dirCli: data.dirCli,
-      telCli: data.telCli
+      telCli: data.telCli,
+      cedCli: data.cedCli
     })
   }
 
@@ -72,7 +73,8 @@ export class RegisterPage implements OnInit {
       nomCli: "",
       apeCli: "",
       dirCli: "",
-      telCli:""
+      telCli:"",
+      corCli:""
     })
   }
 
@@ -88,6 +90,7 @@ export class RegisterPage implements OnInit {
       telCli: this.form.value.telCli,
       cedCli: this.form.value.cedCli,
       contrasena: this.form.value.contrasena,
+      corCli: this.form.value.corCli,
     };
 
     this._clienteService.saveCliente(cliente)
