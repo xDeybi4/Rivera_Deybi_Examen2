@@ -39,6 +39,7 @@ export class CarritoPage implements OnInit {
     //Pushh a la cookie con los nuevos valores añadidos
     localStorage.setItem('carrito', JSON.stringify(this.itemsCarrito));//actualizar cookies
 
+    
     this.CalculoTotal()
   }
 
