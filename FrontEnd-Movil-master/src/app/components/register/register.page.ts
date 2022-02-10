@@ -103,7 +103,7 @@ export class RegisterPage implements OnInit {
         this.router.navigate(['/login'])
       }, async error => {
         const toast = await this.toastController.create({
-          message: "Hubo un problema",
+          message: "Correo o contraseña ya existente.",
           duration: 2000
         });
         toast.present();

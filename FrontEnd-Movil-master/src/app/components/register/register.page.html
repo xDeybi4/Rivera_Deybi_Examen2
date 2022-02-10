@@ -14,7 +14,7 @@
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Contraseña</label>
-      <input formControlName="contrasena" type="text" (focus)="focused = true" (blur)="onBlur($event)" />
+      <input formControlName="contrasena" type="text" pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u002e\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{6,10}$" (focus)="focused = true" (blur)="onBlur($event)" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Nombre</label>
