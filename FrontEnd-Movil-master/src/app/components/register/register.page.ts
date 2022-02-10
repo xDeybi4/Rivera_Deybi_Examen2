@@ -53,20 +53,12 @@ export class RegisterPage implements OnInit {
     this._clienteService.getCliente(this.form.value.corCli).subscribe(data => {
       this.llenarCamposAuto(data);
     }, error => {
-      this.resetCamposAuto();
+      //this.resetCamposAuto();
     }
     )
   }
 
-  async onBlurCedula(event: any) {
-    if(!this.validar){
-      const toast = await this.toastController.create({
-        message: "Cédula ingresada no válida.",
-        duration: 2000
-      });
-      return;
-    }
-  }
+
 
   llenarCamposAuto(data: any) {
     this.form.patchValue({
@@ -83,14 +75,14 @@ export class RegisterPage implements OnInit {
       nomCli: "",
       apeCli: "",
       dirCli: "",
-      telCli:"",
-      cedCli:""
+      telCli: "",
+      cedCli: ""
     })
   }
 
 
 
-  guardar() {
+  async guardar() {
 
     const cliente: any = {
       nomCli: this.form.value.nomCli,
@@ -102,41 +94,15 @@ export class RegisterPage implements OnInit {
       contrasena: this.form.value.contrasena
     };
 
-
-    //
-    var ced : any = this.form.value.cedCli
-    var total = 0;
-    var longitud = ced.length;
-    var longcheck = longitud - 1;
-
-    if (ced !== "" && longitud === 10){
-      for(var i = 0; i < longcheck; i++){
-        if (i%2 === 0) {
-          var aux = ced.charAt(i) * 2;
-          if (aux > 9) aux -= 9;
-          total += aux;
-        } else {
-          total += parseInt(ced.charAt(i)); // parseInt o concatenará en lugar de sumar
-        }
-      }
-
-      total = total % 10 ? 10 - total % 10 : 0;
-
-      if (ced.charAt(longitud-1) == total) {
-      }else{
-        const toast = await this.toastController.create({
-          message: "Cédula ingresada no válida.",
-          duration: 2000
-        });
-        return;
-      }
+    if (!this.validar()) {
+      const toast = await this.toastController.create({
+        message: "Cédula ingresada no válida.",
+        duration: 2000
+      });
+      toast.present();
+      return;
     }
 
-
-    //
-
-
-    
     this._clienteService.saveCliente(cliente)
       .subscribe(async data => {
         const toast = await this.toastController.create({
@@ -156,27 +122,27 @@ export class RegisterPage implements OnInit {
   }
 
   validar() {
-    var ced : any = this.form.value.cedCli
+    var ced: any = this.form.value.cedCli
     var total = 0;
     var longitud = ced.length;
     var longcheck = longitud - 1;
 
-    if (ced !== "" && longitud === 10){
-      for(var i = 0; i < longcheck; i++){
-        if (i%2 === 0) {
+    if (ced !== "" && longitud === 10) {
+      for (var i = 0; i < longcheck; i++) {
+        if (i % 2 === 0) {
           var aux = ced.charAt(i) * 2;
           if (aux > 9) aux -= 9;
           total += aux;
         } else {
-          total += parseInt(ced.charAt(i)); // parseInt o concatenará en lugar de sumar
+          total += parseInt(ced.charAt(i));
         }
       }
 
       total = total % 10 ? 10 - total % 10 : 0;
 
-      if (ced.charAt(longitud-1) == total) {
+      if (ced.charAt(longitud - 1) == total) {
         return true;
-      }else{
+      } else {
         return false;
       }
     }
