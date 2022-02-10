@@ -1,0 +1,21 @@
+<ion-content class="ion-padding">
+  <h1>Hola</h1>
+  <h3>Inicia sesión para continuar!</h3>
+
+
+  <form [formGroup]="form" (ngSubmit)="ingresar()" >
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''" >Cedula</label>
+      <input formControlName="usuario" type="number" (focus)="focused = true" (blur)="onBlur($event)" />
+    </div>
+
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''" >Contraseña</label>
+      <input formControlName="password" type="password" (focus)="focused = true" (blur)="onBlur($event)"/>
+    </div>
+
+    <ion-button expand='block' type="submit" color="primary" [disabled]="form.invalid">Ingresar</ion-button> 
+    <p class="footer-text">¿Eres nuevo?, <a routerLink="/register">Regístrate</a></p>
+
+  </form>
+</ion-content>

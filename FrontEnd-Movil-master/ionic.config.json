@@ -1,0 +1,7 @@
+{
+  "name": "lpbd-market",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

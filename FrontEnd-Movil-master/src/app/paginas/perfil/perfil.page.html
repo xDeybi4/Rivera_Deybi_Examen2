@@ -1,0 +1,33 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-avatar class="avatar">
+        <ion-img
+          src="https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-PNG-Pic-Clip-Art-Background.png">
+        </ion-img>
+      </ion-avatar>
+      <br>
+      <ion-card-subtitle>Mi descripción</ion-card-subtitle>
+      <ion-card-title>{{cookie.usuario.nomCli + " " +cookie.usuario.apeCli}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <br>
+      <b>{{cookie.usuario.dirCli}}</b> <br>
+      <b>{{cookie.usuario.telCli}}</b>
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <ion-label [routerLink]="['/login']" (click)="logout()">
+      Cerrar Sesión
+    </ion-label>
+  </ion-item>
+
+</ion-content>

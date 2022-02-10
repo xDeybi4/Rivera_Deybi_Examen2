@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Productos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngFor="let element of listaProductos">
+    <ion-row style="text-align: center;" justify-content-center>
+      <ion-col padding size-xs="12" size-sm="12" size-md="12" size-lg="12" align-self-stretch>
+        <ion-card>
+          <ion-row style="text-align: center;">
+            <ion-card-title
+              style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">
+              {{element.nomPro}}
+            </ion-card-title>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <img src={{element.imgPro}}
+                style="height: auto; width: auto; margin-top: auto; margin-bottom: auto; margin-left: 10px" />
+            </ion-col>
+            <ion-col style="margin-top: auto; margin-bottom: auto;">
+
+              <br>
+              <b> <span style="margin-left: 10px;">Precio: $ {{ element.puPro | number:'1.2-2'}}</span></b> <br>
+              <br>
+              <b> <span style="margin-left: 10px;">Stock Actual: {{ element.stockPro }}</span></b> <br>
+              <br>
+              <b> <span style="margin-left: 10px;"> Cantidad: </span></b>
+              <input [(ngModel)]="element.catProNavigation" type="number" style="width: 50px; text-align: center;"><br>
+              <b> <span style="margin-left: 10px;">Subtotal: $ {{ element.puPro * element.catProNavigation| number:'1.2-2'}}</span></b> <br>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="element.stockPro < element.catProNavigation || element.catProNavigation == 0 || element.catProNavigation == null" (click)="agregarAlCarrito(element)">Agregar al carrito</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

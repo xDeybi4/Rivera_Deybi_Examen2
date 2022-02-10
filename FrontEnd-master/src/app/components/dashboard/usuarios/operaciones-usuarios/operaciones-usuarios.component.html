@@ -1,0 +1,46 @@
+<h2 mat-dialog-title *ngIf="!data">Agregar Nuevo Usuario</h2>
+<h2 mat-dialog-title *ngIf="data">Editar Usuario</h2>
+<mat-divider style="margin-bottom: 10px;"></mat-divider>
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <div class="grupo">
+      <mat-form-field appearance="outline" style="margin-right: 10px;">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput autocomplete="off" formControlName="nombre">
+        <mat-icon matSuffix>person_pin</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input type="text" matInput autocomplete="off" formControlName="usuario1">
+        <mat-icon matSuffix>supervised_user_circle</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="grupo">
+    <mat-form-field appearance="outline" style="margin-right: 10px;">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput autocomplete="off" formControlName="password">
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="!editando">
+        <mat-label>Confirmar contraseña</mat-label>
+        <input type="password" matInput autocomplete="off" formControlName="passwordC">
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-icon matSuffix>category</mat-icon>
+        <mat-select formControlName="tipo">
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">
+            {{tipo.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="cancelar()">Cancelar</button>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" *ngIf="!editando" [disabled]="(form.invalid || (form.value.password =='' || form.value.passwordC==''|| (form.value.password != form.value.passwordC)))" (click)="guardar()" [mat-dialog-close]="true">Aceptar</button>
+    <button mat-raised-button color="primary" *ngIf="editando" [disabled]="(form.invalid)" (click)="guardar()" [mat-dialog-close]="true">Aceptar</button>
+  </mat-dialog-actions>
+</form>

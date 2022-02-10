@@ -1,0 +1,42 @@
+<h2 mat-dialog-title *ngIf="!cliente">Agregar Nuevo Cliente</h2>
+<h2 mat-dialog-title *ngIf="cliente">Editar Cliente</h2>
+<mat-divider style="margin-bottom: 10px;"></mat-divider>
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <div class="grupo">
+    <mat-form-field appearance="outline" style="margin-right: 10px;">
+      <mat-label>Nombre del Cliente</mat-label>
+      <input type="text" matInput autocomplete="off" formControlName="nomCli">
+      <mat-icon matSuffix>person_pin</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Apellido del Cliente</mat-label>
+      <input type="text" matInput autocomplete="off" formControlName="apeCli">
+      <mat-icon matSuffix>person_pin</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="grupo">
+    <mat-form-field appearance="outline" style="margin-right: 10px;">
+      <mat-label>Cédula</mat-label>
+      <input type="number" [readonly]="cliente" matInput min="01000000000" max="2499999999" autocomplete="off" formControlName="cedCli">
+      <mat-icon matSuffix>credit_card</mat-icon>
+    </mat-form-field><br>
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input type="number" matInput min="0900000000" max="0999999999" matInput autocomplete="off" formControlName="telCli">
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field> 
+  </div>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Dirección</mat-label>
+      <input type="text" matInput autocomplete="off" formControlName="dirCli">
+      <mat-icon matSuffix>map</mat-icon>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="cancelar()">Cancelar</button>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="guardar()"
+      [mat-dialog-close]="true">Aceptar</button>
+  </mat-dialog-actions>
+</form>

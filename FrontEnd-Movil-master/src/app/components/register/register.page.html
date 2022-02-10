@@ -1,0 +1,37 @@
+<ion-content class="ion-padding">
+  <h1>Crear Cuenta</h1>
+  <h3>Registrate para empezar!</h3>
+
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Cédula</label>
+      <input formControlName="cedCli" type="number" matInput min="01000000000" max="2499999999" (focus)="focused = true" (blur)="onBlurCedula($event)" />
+    </div>
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Contraseña</label>
+      <input formControlName="contrasena" type="password" (focus)="focused = true" (blur)="onBlur($event)" />
+    </div>
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Nombre</label>
+      <input formControlName="nomCli" type="text" (focus)="focused = true" (blur)="onBlur($event)" />
+    </div>
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Apellido</label>
+      <input formControlName="apeCli" type="text" (focus)="focused = true" (blur)="onBlur($event)" />
+    </div>
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Dirección</label>
+      <input formControlName="dirCli" type="text" (focus)="focused = true" (blur)="onBlur($event)" />
+    </div>
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Teléfono</label>
+      <input formControlName="telCli" type="number" min="0900000000" max="0999999999" (focus)="focused = true" (blur)="onBlur($event)" />
+    </div>
+
+
+    <ion-button expand='block' type="submit" color="primary" [disabled]="form.invalid">Registro</ion-button>
+    <p class="footer-text">Ya soy cliente, <a routerLink="/login">Iniciar Sesión</a></p>
+
+  </form>
+</ion-content>

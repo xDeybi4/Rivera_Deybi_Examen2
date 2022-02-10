@@ -1,0 +1,74 @@
+<mat-accordion>
+  <div class="contenedor">
+    <mat-toolbar>
+      <span>Facturas</span>
+    </mat-toolbar>
+    <mat-expansion-panel hideToggle="true" (opened)="expandir=false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Historial
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="example-spacer"></span>
+          <mat-icon>receipt</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="standard">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filtro" #input autocomplete="off">
+      </mat-form-field>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+          <ng-container matColumnDef="cedula">
+            <th mat-header-cell *matHeaderCellDef>Cédula</th>
+            <td mat-cell *matCellDef="let element"> {{element.cedula}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="cliente">
+            <th mat-header-cell *matHeaderCellDef>Cliente</th>
+            <td mat-cell *matCellDef="let element"> {{element.cliente}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef>Fecha</th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha | date : 'd/MM/yyyy, h:mm a'}} </td>
+          </ng-container>
+          <ng-container matColumnDef="total">
+            <th class="alinearNumeros" mat-header-cell *matHeaderCellDef>Total</th>
+            <td class="alinearNumeros" mat-cell *matCellDef="let element"> $ {{element.total | number: "1.2-2"}} </td>
+          </ng-container>
+          <ng-container matColumnDef="revisar">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" style="text-align: right;">
+              <a class="cursor" style="color: rgb(12, 146, 163);" (click)="verFactura(element.id)"
+                matTooltip="Ver factura">
+                <mat-icon>search</mat-icon>
+              </a>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </mat-expansion-panel>
+  </div>
+  <div class="contenedor" *ngIf="factura.idFact !=0">
+    <mat-expansion-panel hideToggle="true" [expanded]="expandir === true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Factura #{{factura.idFact}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="example-spacer"></span>
+          <mat-icon>list_alt</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-vista-factura [factura]="factura"></app-vista-factura>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>

@@ -1,0 +1,50 @@
+<h2 mat-dialog-title *ngIf="!producto">Agregar Nuevo Producto</h2>
+<h2 mat-dialog-title *ngIf="producto">Editar Producto</h2>
+<mat-divider style="margin-bottom: 10px;"></mat-divider>
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <div class="grupo">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del Producto</mat-label>
+        <input type="text" matInput placeholder="Nombre" autocomplete="off" formControlName="nomPro">
+        <mat-icon matSuffix>person_pin</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin-left:20px;">
+        <mat-label>Categoría del Producto</mat-label>
+        <mat-icon matSuffix>category</mat-icon>
+        <mat-select formControlName="catPro">
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.idCat">
+            {{categoria.nomCat}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="grupo">
+      <mat-form-field appearance="outline">
+        <mat-label>Stock inicial del producto</mat-label>
+        <input type="number" matInput placeholder="Stock" autocomplete="off" formControlName="stockPro">
+        <mat-icon matSuffix>horizontal_split</mat-icon>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline" style="margin-left:20px;">
+        <mat-label>Precio Unitario del producto</mat-label>
+        <input type="number" matInput placeholder="Ej: 1.5" autocomplete="off" formControlName="puPro">
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>URL de imagen del producto</mat-label>
+      <input type="text" matInput placeholder="Ej: http://..." autocomplete="off" formControlName="imgPro">
+      <mat-icon matSuffix>image</mat-icon>
+    </mat-form-field>
+    <div class="imagen">
+      <img mat-card-image style="width: 300px; height: auto;"
+        src={{form.value.imgPro}}>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="cancelar()">Cancelar</button>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="guardar()"
+      [mat-dialog-close]="true">Aceptar</button>
+  </mat-dialog-actions>
+</form>

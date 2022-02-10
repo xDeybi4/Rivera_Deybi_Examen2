@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+}
+.bordeados-left{
+  border-top-left-radius: 40px 40px;
+}
+
+.bordeados-right{
+  border-top-right-radius: 40px 40px;
+}
+
+.bordeados-bottom{
+  border-bottom-left-radius: 20px 20px;
+  border-bottom-right-radius: 20px 20px;
+}
+
+.alinearNumeros{
+  text-align: right;
+}
+
+.mat-list .mat-list-item {
+  height: 35px;
+  color: azure;
+}

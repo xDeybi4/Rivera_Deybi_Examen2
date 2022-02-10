@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "lpbd-market",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

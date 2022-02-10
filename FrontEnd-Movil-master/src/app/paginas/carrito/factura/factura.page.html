@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>¡Finalizar Compra!</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Datos de facturación</ion-card-title>
+      <ion-card-subtitle> <b>{{cookieAuth.usuario.nomCli + " " +cookieAuth.usuario.apeCli}} </b> </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-title>Dirección</ion-card-title>
+      <ion-card-subtitle><b>{{cookieAuth.usuario.dirCli}}</b>
+        <br>
+        <b>{{cookieAuth.usuario.telCli}}</b>
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-title>Detalle del pedido</ion-title>
+  <br>
+
+<!-- //buena data de deybi -->
+  <ion-list *ngFor="let element of itemsCarrito;">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src={{element.imgPro}}>
+      </ion-avatar>
+      <h2>{{element.nomPro}}</h2>
+      <ion-label style="text-align: right;">
+        <h2>Cantidad: {{element.catProNavigation}} </h2>
+        <h3>Subtotal: $ {{element.puPro * element.catProNavigation | number:'1.2-2'}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <br>
+  <ion-row>
+    <ion-col>
+      <ion-label style="text-align: right;">
+        <h1>
+          Total:
+        </h1>
+      </ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label style="text-align: right;">
+        <h1>
+          $ {{total | number:'1.2-2'}}
+        </h1>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <br>
+  <div style="text-align: center;">
+    <ion-button (click)="pagar()" color="success">Finalizar Compra</ion-button>
+  </div>
+</ion-content>

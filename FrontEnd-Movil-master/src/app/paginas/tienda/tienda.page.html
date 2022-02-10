@@ -1,0 +1,37 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Tienda
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card (click)="abrirProductos(element.idCat)" *ngFor="let element of listaCategorias">
+    <ion-img src={{element.imgCat}}></ion-img>
+    <div class="myOverlay">
+      <ion-text>
+        <h1>{{element.nomCat}}</h1>
+      </ion-text>
+    </div>
+  </ion-card>
+
+  <!-- <ion-card>
+    <ion-img src="https://abasto.com/wp-content/uploads/2021/06/summer-candy-dulces-verano.jpg"></ion-img>
+    <div class="myOverlay">
+      <ion-text>
+        <h1 class="texto">Dulces</h1>
+      </ion-text>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <ion-img src="https://thefoodtech.com/wp-content/uploads/2020/05/bebidas-no-alcoh%C3%B3licas.jpg"></ion-img>
+    <div class="myOverlay">
+      <ion-text>
+        <h1 class="texto">Bebidas</h1>
+      </ion-text>
+    </div>
+  </ion-card> -->
+
+</ion-content>
