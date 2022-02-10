@@ -14,7 +14,7 @@
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Contraseña</label>
-      <input formControlName="contrasena" type="password" (focus)="focused = true" (blur)="onBlur($event)" />
+      <input formControlName="contrasena" type="text" (focus)="focused = true" (blur)="onBlur($event)" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Nombre</label>
