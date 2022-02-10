@@ -6,15 +6,19 @@
   <form [formGroup]="form" (ngSubmit)="guardar()">
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Correo</label>
-      <input formControlName="corCli" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" (focus)="focused = true" (blur)="onBlurCorreo($event)" />
+      <input formControlName="corCli" type="text"
+        pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+        (focus)="focused = true" (blur)="onBlurCorreo($event)" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Cédula</label>
-      <input formControlName="cedCli" type="text" (focus)="focused = true"/>
+      <input formControlName="cedCli" type="text" (focus)="focused = true" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Contraseña</label>
-      <input formControlName="contrasena" type="text" pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u002e\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{6,10}$" (focus)="focused = true" (blur)="onBlur($event)" />
+      <input formControlName="contrasena" type="text"
+        pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u002e\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{6,10}$"
+        (focus)="focused = true" (blur)="onBlur($event)" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Nombre</label>
@@ -30,7 +34,8 @@
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Teléfono</label>
-      <input formControlName="telCli" type="number" min="0900000000" max="0999999999" (focus)="focused = true" (blur)="onBlur($event)" />
+      <input formControlName="telCli" type="number" min="0900000000" max="0999999999" (focus)="focused = true"
+        (blur)="onBlur($event)" />
     </div>
 
 

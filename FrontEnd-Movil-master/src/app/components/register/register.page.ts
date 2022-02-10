@@ -59,7 +59,6 @@ export class RegisterPage implements OnInit {
   }
 
 
-
   llenarCamposAuto(data: any) {
     this.form.patchValue({
       nomCli: data.nomCli,
