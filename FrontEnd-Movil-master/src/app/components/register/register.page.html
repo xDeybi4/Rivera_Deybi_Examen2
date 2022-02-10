@@ -6,7 +6,7 @@
   <form [formGroup]="form" (ngSubmit)="guardar()">
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Correo</label>
-      <input formControlName="corCli" type="text" (focus)="focused = true" (blur)="onBlurCorreo($event)" />
+      <input formControlName="corCli" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" (focus)="focused = true" (blur)="onBlurCorreo($event)" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Cédula</label>

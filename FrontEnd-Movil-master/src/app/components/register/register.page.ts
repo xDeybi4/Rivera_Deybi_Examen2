@@ -74,7 +74,7 @@ export class RegisterPage implements OnInit {
       apeCli: "",
       dirCli: "",
       telCli:"",
-      corCli:""
+      cedCli:""
     })
   }
 
@@ -88,9 +88,9 @@ export class RegisterPage implements OnInit {
       apeCli: this.form.value.apeCli,
       dirCli: this.form.value.dirCli,
       telCli: this.form.value.telCli,
-      cedCli: this.form.value.cedCli,
-      contrasena: this.form.value.contrasena,
       corCli: this.form.value.corCli,
+      cedCli: this.form.value.cedCli,
+      contrasena: this.form.value.contrasena
     };
 
     this._clienteService.saveCliente(cliente)
