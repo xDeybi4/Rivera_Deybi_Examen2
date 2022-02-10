@@ -10,7 +10,7 @@
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Cédula</label>
-      <input formControlName="cedCli" type="number" matInput min="01000000000" max="2499999999" (focus)="focused = true"/>
+      <input formControlName="cedCli" type="number" matInput min="01000000000" max="2499999999" (focus)="focused = true" (blur)="onBlurCedula($event)"/>
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Contraseña</label>
