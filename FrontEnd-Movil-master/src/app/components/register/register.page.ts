@@ -28,7 +28,8 @@ export class RegisterPage implements OnInit {
       dirCli: ['', Validators.required],
       telCli: ['', Validators.required],
       cedCli: ['', Validators.required],
-      contrasena: ['', Validators.required]
+      contrasena: ['', Validators.required],
+      corCli: ['', Validators.required]
     })
   }
 
@@ -41,6 +42,7 @@ export class RegisterPage implements OnInit {
       this.focused = false;
     }
   }
+
   onBlurCedula(event: any) {
     const value = event.target.value;
 
